@@ -7,6 +7,26 @@ When analyzing crowds, one is often interested in the overall motions of the cro
 Our method for discovering these motion patterns uses a three-stage pipeline: (1) represent the behavior of each person at each moment in time using a low-dimensional data point (_tracklet_), (2) cluster these data points based on spatial relations to discover small _motion clusters_, (3) concatenate clusters that are frequently visited in sequence to discover large _motion patterns_.
 
 
+# Screenshots
+
+Input:
+```
+python src/visualize.py data/hurricane_best_track.txt
+```
+
+Output:
+![Output for Hurricane dataset.](https://raw.githubusercontent.com/stijnh/scalable-crowd-analysis/master/img/example_hurricane.png)
+
+
+Input:
+```
+python src/simulate.py sinus | python src/visualize.py - --beta 0.3 --alpha 15 --gamma 0.99 --cut 0.5
+```
+
+Output:
+![Output for sinus dataset.](https://raw.githubusercontent.com/stijnh/scalable-crowd-analysis/master/img/example_sinus.png)
+
+
 
 # Requirements
 The implementation requires Python 2.7. Additionally, the  following PIP packages must installed:
@@ -76,25 +96,6 @@ labels = merge_cohesion(labels, A, cut=None)
 # Example Datasets
 The dataset `data/hurricane_best_track.txt` has been extracted from the Best Track Data (HURDAT2) which has been released by the National Hurricane Center of the National Oceanic and Atmospheric Administration (https://www.nhc.noaa.gov/data/). The dataset consists of six-hourly locations of all known tropical cyclones and subtropical cyclones since 2004.
 
-
-# Screenshots
-
-Input:
-```
-python src/visualize.py data/hurricane_best_track.txt
-```
-
-Output:
-![Output for Hurricane dataset.](https://raw.githubusercontent.com/stijnh/scalable-crowd-analysis/master/img/example_hurricane.png)
-
-
-Input:
-```
-python src/simulate.py sinus | python src/visualize.py - --beta 0.3 --alpha 15 --gamma 0.99 --cut 0.5
-```
-
-Output:
-![Output for sinus dataset.](https://raw.githubusercontent.com/stijnh/scalable-crowd-analysis/master/img/example_sinus.png)
 
 
 # License
