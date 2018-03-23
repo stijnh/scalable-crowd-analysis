@@ -2,9 +2,9 @@
 This repository provides an implementation in Python 2.7 of our algorithm [1] for scalable detection of crowd motion patterns. The algorithm takes as input a set of pedestrian trajectories and outputs a set of _crowd motion patterns_, i.e., contiguous spatial areas describing the dominant motions within the crowd.
 
 # About
-When analyzing crowds, one is often interested in the overall motions of the crowd _as a whole_ and not in the motions of each individual. A high-level representation using _crowd motion pattersn_ exposes the macro scale spatio-temporal patterns within the crowd. 
+When analyzing crowds, one is often interested in the overall motions of the crowd _as a whole_ and not in the motions of each individual. A high-level representation using _crowd motion patterns_ exposes the macro scale spatio-temporal patterns within the crowd. 
 
-Our solution uses a three-stage pipeline: (1) represent the behavior of each person at each moment in time using a low-dimensional data point, (2) cluster these data points based on spatial relations to discover small _motion clusters_, (3) concatenate clusters that are frequently visited in sequence to discover large _motion patterns_.
+Our method for discovering these motion patterns uses a three-stage pipeline: (1) represent the behavior of each person at each moment in time using a low-dimensional data point (_tracklet_), (2) cluster these data points based on spatial relations to discover small _motion clusters_, (3) concatenate clusters that are frequently visited in sequence to discover large _motion patterns_.
 
 
 
@@ -48,7 +48,7 @@ python src/visualize.py --help
 ```
 
 ## Crowd Simulator
-Use `src/simulate.py` for generating synthetic crowd datasets [1]. See `--help` for the full list of options. Currently, five scenarios are supported: 
+Use `src/simulate.py` for generating synthetic crowd datasets using our simulation and embedding method [1]. See `--help` for the full list of options. Currently, five scenarios are supported: 
 * `lane`: two opossing lanes.
 * `sinus`: two opposing sinusoidal paths.
 * `parallel`: two parallel lanes some distance apart.
@@ -63,10 +63,10 @@ python src/simulate.py sinus | python src/visualize.py - --beta 0.3 --alpha 15 -
 
 
 ## Library
-See `src/detection.py` for details on integrating our work into your application. The most important functions are:
+See `src/detection.py` for details on integrating our work into your application. The important functions are:
 
 ```
-ids,tracklets = build_tracklets(trajectories, window)
+ids, tracklets = build_tracklets(trajectories, window)
 rho, delta, parent = prepare_quick_shift(tracklets)
 labels, centers = perform_quick_shift(rho, delta, parent, min_rho=0, max_delta=1)
 A = calculate_cohesion(ids, labels, gamma, samples=25)
