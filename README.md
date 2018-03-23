@@ -34,7 +34,17 @@ The implementation requires Python 2.7. Additionally, the  following PIP package
 * matplotlib (2.0.0)
 * scipy (0.18.1)
 
-Use `pip install -r requirements.txt` to install these packages.  
+Use `pip install -r requirements.txt` to install these packages. 
+
+We recommend using `virtualenv` to create a isolated Python environment. The final command will activate your isolated python environment.
+
+```
+virtualenv --python=python2.7 crowd-analysis
+crowd-analysis/bin/pip install -r requirements.txt
+source crowd-analysis/bin/activate
+```
+
+This 
 
 # Usage
 There are three parts provided by this implementation: (1) a visualization script which analyzes a given dataset and plots the results, (2) a simulation script for creating synthetic crowd datasets, and (3) a library which can be integrated into other applications.
