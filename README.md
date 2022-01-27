@@ -112,4 +112,4 @@ The dataset `data/hurricane_best_track.txt` has been extracted from the Best Tra
 This software is licensed under the MIT license.
 
 # Bibliography
-[1] S. Heldens, N. Litvak, M. van Steen, Scalable Crowd Motion Detection and Analysis, 2018, Manuscript submitted for publication.
+[1] S. Heldens, N. Litvak and M. van Steen, "Scalable Detection of Crowd Motion Patterns," in IEEE Transactions on Knowledge and Data Engineering, vol. 32, no. 1, pp. 152-164, 2018, doi: 10.1109/TKDE.2018.2879079.
